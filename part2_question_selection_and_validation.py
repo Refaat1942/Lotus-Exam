@@ -33,6 +33,10 @@ EXAM_RULES = {
         "total": 20,
         "categories": {"assistant": 20},
     },
+    "Beauty Advisor": {
+        "total": 25,
+        "categories": {"cosmetics": 25},
+    },
     "Proficiency Bonus - Pharmacist": {
         "total": 30,
         "categories": {"drug": 15, "cosmetics": 15},

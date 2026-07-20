@@ -11,6 +11,7 @@ APP_BASE_URL = "http://187.124.15.14:5050"
 EXAM_TYPES = [
     "Pharmacist (New Hire)",
     "Assistant (New Hire)",
+    "Beauty Advisor",
     "Proficiency Bonus - Pharmacist",
     "Proficiency Bonus - Assistant",
     "Branch Manager Promotion",

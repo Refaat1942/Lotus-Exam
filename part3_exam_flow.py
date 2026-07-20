@@ -17,6 +17,7 @@ QUESTION_TIME_LIMIT = 45  # seconds per question
 SHEET_MAP = {
     "Pharmacist (New Hire)": "Pharmacist_New_Hire",
     "Assistant (New Hire)": "Assistant_New_Hire",
+    "Beauty Advisor": "Beauty_Advisor",
     "Proficiency Bonus - Pharmacist": "Proficiency_Bonus_Pharmacist",
     "Proficiency Bonus - Assistant": "Proficiency_Bonus_Assistant",
     "Branch Manager Promotion": "Branch_Manager_Promotion",
