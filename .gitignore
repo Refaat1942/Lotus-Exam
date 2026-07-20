@@ -1,0 +1,22 @@
+# Secrets
+.streamlit/secrets.toml
+service_account.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+
+# Results / generated files
+results/
+*.xlsx
+Weekly_Report_*.xlsx
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
