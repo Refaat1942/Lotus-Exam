@@ -25,6 +25,28 @@ def clean_text(text):
     return text
 
 
+def normalize_phone(value):
+    """Normalize Egyptian phone numbers for storage and deduplication."""
+    if value is None:
+        return ""
+
+    text = str(value).strip()
+    if not text or text.lower() in ("nan", "none"):
+        return ""
+
+    if re.fullmatch(r"\d+\.0", text):
+        text = text[:-2]
+
+    digits = re.sub(r"\D", "", text)
+    if not digits:
+        return ""
+
+    if len(digits) == 10 and digits.startswith("1"):
+        digits = "0" + digits
+
+    return digits
+
+
 def clean_option_text(text):
     if not text:
         return ""

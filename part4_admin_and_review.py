@@ -4,7 +4,7 @@ from email.message import EmailMessage
 import pandas as pd
 import streamlit as st
 from datetime import datetime
-from part1_config_and_helpers import ADMIN_PASSWORD  
+from part1_config_and_helpers import ADMIN_PASSWORD, normalize_phone
 
 from gsheets import get_sheet, get_results_sheet
 from branding import page_setup, render_footer
@@ -62,10 +62,12 @@ def save_result_files(user_info, score, correct, incorrect, total, timed_out_cou
     filename = f"{user_info['name'].replace(' ', '_')}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.xlsx"
     filepath = os.path.join(RESULTS_FOLDER, filename)
 
+    phone = normalize_phone(user_info.get("phone", ""))
+
     # 1. تجهيز الداتا لملف الـ Excel
     summary_df = pd.DataFrame([{
         "Name": user_info["name"],
-        "Phone": user_info["phone"],
+        "Phone": phone,
         "Graduation Year": user_info.get("year", ""),
         "University": user_info["uni"],
         "Exam Type": user_info["exam_type"],
@@ -119,7 +121,7 @@ def save_result_files(user_info, score, correct, incorrect, total, timed_out_cou
         row_data = [
             datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
             user_info.get("name", ""),
-            user_info.get("phone", ""),
+            f"'{phone}" if phone else "",
             user_info.get("year", ""),
             user_info.get("uni", ""),
             user_info.get("exam_type", ""),
