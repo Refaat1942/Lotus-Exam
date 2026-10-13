@@ -6,7 +6,7 @@ from gsheets import get_sheet
 from branding import page_setup, render_footer, PRIMARY, PRIMARY_DARK
 
 # Ensure this is the correct URL for your server
-APP_BASE_URL = "http://187.124.15.14:5050"
+APP_BASE_URL = "http://187.124.177.138:5050"
 
 EXAM_TYPES = [
     "Pharmacist (New Hire)",

@@ -3,7 +3,7 @@
 An elegant, web-based talent assessment & recruitment exam system for Lotus Pharmacies,
 built with [Streamlit](https://streamlit.io/).
 
-Live: http://187.124.15.14:5050/
+Live: http://187.124.177.138:5050/
 
 ## Features
 
