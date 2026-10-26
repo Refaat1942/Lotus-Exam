@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import random
 import string
@@ -5,8 +6,8 @@ from datetime import datetime, timedelta
 from gsheets import get_sheet
 from branding import page_setup, render_footer, PRIMARY, PRIMARY_DARK
 
-# Ensure this is the correct URL for your server
-APP_BASE_URL = "http://187.124.177.138:5050"
+# Public URL of this server (override with the APP_BASE_URL environment variable)
+APP_BASE_URL = os.environ.get("APP_BASE_URL", "http://187.124.177.138:5050").rstrip("/")
 
 EXAM_TYPES = [
     "Pharmacist (New Hire)",
