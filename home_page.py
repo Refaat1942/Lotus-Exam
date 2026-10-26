@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import random
 import string
@@ -5,8 +6,22 @@ from datetime import datetime, timedelta
 from gsheets import get_sheet
 from branding import page_setup, render_footer, PRIMARY, PRIMARY_DARK
 
-# Ensure this is the correct URL for your server
-APP_BASE_URL = "http://187.124.15.14:5050"
+# Fallback public URL of this server, used only when the browser's address is unknown
+DEFAULT_BASE_URL = "http://187.124.177.138:5050"
+
+
+def get_base_url():
+    """Build exam links on the address HR opened the app on, so they always match the server."""
+    override = os.environ.get("APP_BASE_URL")
+    if override:
+        return override.rstrip("/")
+    try:
+        host = st.context.headers.get("Host")
+        if host:
+            return f"http://{host}"
+    except Exception:
+        pass
+    return DEFAULT_BASE_URL
 
 EXAM_TYPES = [
     "Pharmacist (New Hire)",
@@ -72,7 +87,7 @@ def show_home_page():
             minutes_valid=minutes,
             generated_by=hr_name.strip()
         )
-        exam_link = f"{APP_BASE_URL}?token={token}"
+        exam_link = f"{get_base_url()}?token={token}"
 
         st.success("✅ Exam link generated successfully!")
 
